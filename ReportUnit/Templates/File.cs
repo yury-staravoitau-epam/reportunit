@@ -202,6 +202,7 @@ namespace ReportUnit.Templates
                                                                     <tr>
                                                                         <th>TestName</th>
                                                                         <th>Status</th>
+                                                                        <th>Owner</th>
                                                                         @if (Model.TestSuiteList.Count > 0 && Model.TestSuiteList[ix].TestList.Any(x => x.CategoryList.Count > 0))
                                                                         {
                                                                             <th>Category</th>
@@ -227,9 +228,16 @@ namespace ReportUnit.Templates
                                                                                 {
                                                                                     <span class='name'>@testName</span>
                                                                                 }
+                                                                                
                                                                             </td>
                                                                             <td class='test-status @test.Status.ToString().ToLower()'>
                                                                                 <span class='label @test.Status.ToString().ToLower()'>@test.Status.ToString()</span>
+                                                                            </td>
+                                                                            <td>
+                                                                            @if (!String.IsNullOrEmpty(@test.Author))
+                                                                            {
+                                                                                <p class='author'>@test.Author</p>
+                                                                            }
                                                                             </td>
                                                                             @if (Model.TestSuiteList.Count > 0 && Model.TestSuiteList[ix].TestList.Any(x => x.CategoryList.Count > 0))
                                                                             {
@@ -332,7 +340,7 @@ namespace ReportUnit.Templates
                 <script src='https://cdn.rawgit.com/reportunit/reportunit/005dcf934c5a53e60b9ec88a2a118930b433c453/cdn/reportunit.js' type='text/javascript'></script>
 
             </html>
-            ".Replace("\r\n", "").Replace("\t", "").Replace("    ", ""); 
+            ".Replace("\r\n", "").Replace("\t", "").Replace("    ", "");
         }
     }
 }

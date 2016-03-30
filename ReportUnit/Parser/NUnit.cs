@@ -174,6 +174,14 @@ namespace ReportUnit.Parser
                             ? description.ToArray()[0].Attribute("value").Value 
                             : "";
 
+                    var author =
+                       tc.Descendants("property")
+                       .Where(c => c.Attribute("name").Value.Equals("Author", StringComparison.CurrentCultureIgnoreCase));
+                    test.Author =
+                        author.Count() > 0
+                            ? author.ToArray()[0].Attribute("value").Value
+                            : "";
+
                     // get test case level categories
                     var categories = this.GetCategories(tc, true);
 

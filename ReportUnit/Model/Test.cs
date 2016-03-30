@@ -26,6 +26,8 @@ namespace ReportUnit.Model
 
         public string EndTime { get; set; }
 
+        public string Author { get; set; }
+
         /// <summary>
         /// How long the test took to run (in milliseconds)
         /// </summary>
